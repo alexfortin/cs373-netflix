@@ -17,9 +17,25 @@ def netflix_solve(r, w) :
     r a reader
     w a writer
     """
+    _list = []
+    movieID = ""
     for s in r :
-        movieID = s
-        v    = netflix_eval(i, j)
-        netflix_print(w, i, j, v)
+        if ':' in s:
+            # do some work
+            if movieID == "" :
+                movieID = s
+            else :
+                # process movieID with _list
+                # set movieID to s
+                netflix_write(movieID, _list, w)
+        else :
+            _list.append(s)
+            
+        
+            
+def netflix_write(movieID, customers, w) :
+    w.write(movieID)
+    for s in customers :
+        w.write(s)
 
 

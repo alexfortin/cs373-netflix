@@ -34,38 +34,31 @@ def netflix_solve(r, w) :
 
     customerList = []
     movieID = ""
+    # looping through every line of input
     for s in r :
+        # colon signifies movie ID
         if ':' in s:
             assert(':' in s)
 
-            if movieID == "" :
-                movieID = s
-            else :
-                assert(len(movieID) > 0)
-                
-                customerRating = predictRatings(movieID, customerList)
-                actualRating(movieID, customerList)
-                netflix_write(movieID, customerRating, w)
-                del customerList [:]
-                movieID = s
+            movieID = s
+            w.write(movieID)
         else :
-            customerList.append(s)
-    customerRating = predictRatings(movieID, customerList)
-    actualRating(movieID, customerList)
-    netflix_write(movieID, customerRating, w)
+            assert(len(movieID) > 0)
+            customer = s[:-1]
+            customerRating = predictRatings(movieID, customer)
+            actualData.append(int(actualFile[movieID[:-2]][customer]))    
+            netflix_write(movieID, customerRating, w)
 
     w.write("RMSE: " + "%.2f" % rmse(predictedData, actualData) + "\n")
         
             
-def netflix_write(movieID, customerRatings, w) :
+def netflix_write(movieID, customer, w) :
     assert(len(movieID) > 0)
 
-    w.write(movieID)
-    for s in customerRatings :
-        w.write("%.1f" % float(s) + "\n")
+    w.write("%.1f" % float(customer) + "\n")
 
 
-def predictRatings(movieID, customerList) :
+def predictRatings(movieID, customer) :
     assert(len(movieID) > 0)
     global userAverage
     global meanFile
@@ -73,25 +66,22 @@ def predictRatings(movieID, customerList) :
     global dateFile
     global userAverageYear
 
-    customerRating = []
-
-    for s in customerList :
-        rating = []
-        movieYear = dateFile[movieID[:-2]]
-        yearAverage = userAverageYear[s[:-1]]
-        found = False
-        for i in yearAverage :
-            year = i[0].split('-')
-            if (movieYear >= year[0] and movieYear <= year[1]) :
-                rating.append(i[1])
-                found = True
-        rating.append(userAverage[s[:-1]]['average'])
-        if(not found) :
-            rating.append(meanFile[int(movieID[:-2])][0])
-        predictedRating = mean(rating)
-        customerRating.append(str(predictedRating))
-        predictedData.append(predictedRating) 
-    return customerRating    
+    rating = []
+    movieYear = dateFile[movieID[:-2]]
+    yearAverage = userAverageYear[customer]
+    customerRating = ""
+    found = False
+    for i in yearAverage :
+        year = i[0].split('-')
+        if (movieYear >= year[0] and movieYear <= year[1]) :
+            customerRating = i[1]
+            found = True
+    if(not found) :
+        customerRating = userAverage[customer]['average']
+    meanRating = meanFile[int(movieID[:-2])][0]
+    predictedRating = (customerRating + meanRating) / 2
+    predictedData.append(predictedRating) 
+    return predictedRating                                                                                                                       
 
 def actualRating(movieID, customerList) :
     assert(len(movieID) > 0)

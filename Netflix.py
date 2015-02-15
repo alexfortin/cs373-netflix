@@ -54,7 +54,6 @@ def netflix_solve(r, w) :
             
 def netflix_write(movieID, customer, w) :
     assert(len(movieID) > 0)
-
     w.write("%.1f" % float(customer) + "\n")
 
 
@@ -71,6 +70,7 @@ def predictRatings(movieID, customer) :
     yearAverage = userAverageYear[customer]
     customerRating = ""
     found = False
+    # loop through all the years in cache of a users ratings per year
     for i in yearAverage :
         year = i[0].split('-')
         if (movieYear >= year[0] and movieYear <= year[1]) :

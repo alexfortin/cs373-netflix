@@ -15,7 +15,7 @@ predictedData = []
 actualData = []
 # Caches
 userAverage = json.load(open('/u/mck782/netflix-tests/nrc523-ucache.json'))
-meanFile = json.load(open('//u/mck782/netflix-tests/jab5948-movie-stats.json'))
+meanFile = json.load(open('//u/mck782/netflix-tests/nrc523-mvcache.json'))
 actualFile = json.load(open('/u/mck782/netflix-tests/pma459-answersCache.json'))
 dateFile = json.load(open('/u/mck782/netflix-tests/af22574-movieDates.json'))
 userAverageYear = json.load(open('/u/mck782/netflix-tests/cdm2697-userRatingsAveragedOver10yInterval.json'))
@@ -82,9 +82,9 @@ def predictRatings(movieID, customer) :
             customerRating = i[1]
             found = True
     if(not found) :
-        customerRating = userAverage[customer]['average']
-    meanRating = meanFile[int(movieID[:-2])][0]
-    predictedRating = (customerRating + meanRating) / 2
+        customerRating = userAverage[customer]['avg'] 
+    meanRating = meanFile[movieID[:-2]]['pseudo']
+    predictedRating = (customerRating + meanRating - 3.61)
     predictedData.append(predictedRating) 
     return predictedRating                                                                                                                       
 

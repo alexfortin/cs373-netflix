@@ -48,10 +48,10 @@ def netflix_solve(r, w) :
             movieID = s
             w.write(movieID)
         else :
-            assert(int(movieID[:-2]) > 0)
-            customer = s[:-1]
+            assert(int(movieID.strip(' \t\n\r:')) > 0)
+            customer = s.strip(' \t\n\r')
             customerRating = predictRatings(movieID, customer)
-            actualData.append(int(actualFile[movieID[:-2]][customer]))    
+            actualData.append(int(actualFile[movieID.strip(' \t\n\r:')][customer]))    
             netflix_write(customerRating, w)
 
     w.write("RMSE: " + "%.2f" % rmse(predictedData, actualData) + "\n")
@@ -63,7 +63,7 @@ def netflix_write(customerRating, w) :
 
 
 def predictRatings(movieID, customer) :
-    assert(int(movieID[:-2]) > 0)
+    assert(int(movieID.strip(' \t\n\r:')) > 0)
     global userAverage
     global meanFile
     global predictedData
@@ -71,7 +71,7 @@ def predictRatings(movieID, customer) :
     global userAverageYear
 
     rating = []
-    movieYear = dateFile[movieID[:-2]]
+    movieYear = dateFile[movieID.strip(' \t\n\r:')]
     yearAverage = userAverageYear[customer]
     customerRating = ""
     found = False
@@ -83,13 +83,13 @@ def predictRatings(movieID, customer) :
             found = True
     if(not found) :
         customerRating = userAverage[customer]['avg'] 
-    meanRating = meanFile[movieID[:-2]]['pseudo']
+    meanRating = meanFile[movieID.strip(' \t\n\r:')]['pseudo']
     predictedRating = (customerRating + meanRating - 3.61)
     predictedData.append(predictedRating) 
     return predictedRating                                                                                                                       
 
 def actualRating(movieID, customer) :
-    assert(int(movieID[:-2]) > 0)
+    assert(int(movieID.strip(' \t\n\r:')) > 0)
     global actualFile
 
-    return int(actualFile[movieID[:-2]][customer[:-1]])
+    return int(actualFile[movieID.strip(' \t\n\r:')][customer.strip(' \t\n\r')])

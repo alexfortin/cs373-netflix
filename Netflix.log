@@ -1,0 +1,114 @@
+commit 68bd363050667ac5be4ba816e70da041bbdbfb9d
+Author: Alex Fortin <alexfortin@utexas.edu>
+Date:   Thu Feb 19 14:45:55 2015 -0600
+
+    Ran pydoc closes #12
+
+commit 331ee0d1dc1e7c410d7553c652196496c33605b0
+Author: Alex Fortin <alexfortin@utexas.edu>
+Date:   Thu Feb 19 14:19:20 2015 -0600
+
+    Correct test output file
+
+commit 0e8349c409abc822e8a4c6984afd18713e457d0f
+Author: Alex Fortin <alexfortin@utexas.edu>
+Date:   Thu Feb 19 14:17:51 2015 -0600
+
+    Corrected output file
+
+commit 510aa5399ece191ec1f6cbdfd69f3ff0e9711220
+Author: Alex Fortin <alexfortin@utexas.edu>
+Date:   Thu Feb 19 14:12:25 2015 -0600
+
+    Removed timer
+
+commit e213bc3e5a4be77804bd2c17ee4592b309442058
+Author: Alex Fortin <alexfortin@utexas.edu>
+Date:   Thu Feb 19 14:09:41 2015 -0600
+
+    Created acceptance tests closes #8
+
+commit aa18b5ffee264772da5cefae0f6c37168100e8ea
+Merge: 738b945 2fb1c9f
+Author: Alex Fortin <alexfortin@utexas.edu>
+Date:   Thu Feb 19 14:04:31 2015 -0600
+
+    Merge branch 'master' of github.com:alexfortin/cs373-netflix
+
+commit 738b94570fdc260107aa69d9daf8f8e2ef617664
+Author: Alex Fortin <alexfortin@utexas.edu>
+Date:   Thu Feb 19 14:04:12 2015 -0600
+
+    Implemented better white space and colon stripping
+
+commit 2fb1c9f20b98655f19f5018b7479d2c943649efb
+Author: Jericho-One <aaron.dishman@utexas.edu>
+Date:   Thu Feb 19 13:52:07 2015 -0600
+
+    100 percent coverage
+
+commit 61c150a0e0f9e41875b9fb78394ebbea9dcb9a74
+Author: Alex Fortin <alexfortin@utexas.edu>
+Date:   Thu Feb 19 13:26:44 2015 -0600
+
+    Implemented faster solution closes #11
+
+commit 94142b46a553e2637ab5d08e5c9800e6fe15c30d
+Author: Alex Fortin <alexfortin@utexas.edu>
+Date:   Wed Feb 18 19:30:22 2015 -0600
+
+    Changed file headers to Mikkels directory
+
+commit fc99d6f651e4807267e1754a047864295fe6879d
+Author: Alex Fortin <alexfortin@utexas.edu>
+Date:   Wed Feb 18 19:21:49 2015 -0600
+
+    Fixed testing suite and netflix methods
+
+commit 757e7efcf8743d5939f46717ffe11ea9dc979738
+Author: Aaron <aaron.dishman@utexas.edu>
+Date:   Sun Feb 15 15:07:56 2015 -0600
+
+    closes #5, closes #7, some tests written
+
+commit c2875b28d65b3da61f591c60147d11c3bf690b0f
+Author: Alex Fortin <alexfortin@utexas.edu>
+Date:   Sun Feb 15 14:08:07 2015 -0600
+
+    Implemented simple solution closes #6
+
+commit 4c68710b5a537a059efb1401e0f5e4a3c2d0223b
+Author: Alex Fortin <alexfortin@utexas.edu>
+Date:   Sun Feb 15 12:13:56 2015 -0600
+
+    Inital optimization
+
+commit 9321b4b9591c526f1a29667966cd9ff0f1c7931a
+Author: Alex Fortin <alexfortin@utexas.edu>
+Date:   Sat Feb 14 14:52:30 2015 -0600
+
+    Initial skeleton of implementation closes #18
+
+commit 6ec8a64dc277a2b4caa9008dba2bd0000308973a
+Author: Aaron <aaron.dishman@utexas.edu>
+Date:   Sat Feb 14 12:35:36 2015 -0600
+
+    wrote a text parser closes #17
+
+commit d59b3a5502337e6456dc8e2a33a603572ff75848
+Author: Aaron <aaron.dishman@utexas.edu>
+Date:   Sat Feb 14 12:06:59 2015 -0600
+
+    piping tests
+
+commit f08fcb681d0d4b080ab417c236b44390115b6a09
+Author: Aaron <aaron.dishman@utexas.edu>
+Date:   Sat Feb 14 11:47:40 2015 -0600
+
+    added rmse method to Netflix.py file closes #16
+
+commit 5b4948684eda3be6a2c0aac7856daabdf7a80aba
+Author: Alex Fortin <alexfortin@utexas.edu>
+Date:   Sat Feb 14 11:38:21 2015 -0600
+
+    Initial commit closes #2

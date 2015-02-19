@@ -14,11 +14,11 @@ from sys        import version
 predictedData = []
 actualData = []
 # Caches
-userAverage = json.load(open('/u/afortin/downing/cs373/p2-netflix/netflix-tests/nrc523-ucache.json'))
-meanFile = json.load(open('/u/afortin/downing/cs373/p2-netflix/netflix-tests/jab5948-movie-stats.json'))
-actualFile = json.load(open('/u/afortin/downing/cs373/p2-netflix/netflix-tests/pma459-answersCache.json'))
-dateFile = json.load(open('/u/afortin/downing/cs373/p2-netflix/cs373-netflix/data.json'))
-userAverageYear = json.load(open('/u/afortin/downing/cs373/p2-netflix/netflix-tests/cdm2697-userRatingsAveragedOver10yInterval.json'))
+userAverage = json.load(open('/u/mck782/netflix-tests/nrc523-ucache.json'))
+meanFile = json.load(open('//u/mck782/netflix-tests/jab5948-movie-stats.json'))
+actualFile = json.load(open('/u/mck782/netflix-tests/pma459-answersCache.json'))
+dateFile = json.load(open('/u/mck782/netflix-tests/af22574-movieDates.json'))
+userAverageYear = json.load(open('/u/mck782/netflix-tests/cdm2697-userRatingsAveragedOver10yInterval.json'))
 
 def rmse(predictedData, actualData) :
     assert(hasattr(predictedData, "__iter__"))

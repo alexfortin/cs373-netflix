@@ -4,10 +4,12 @@
 # imports for RMSE.py
 # -------------------
 
-from functools import reduce
-from numpy     import mean, sqrt, square, subtract
-from sys       import version
 import json
+from functools  import reduce
+from math       import sqrt
+# from numpy     import mean, sqrt, square, subtract
+from sys        import version
+
 
 predictedData = []
 actualData = []
@@ -22,7 +24,10 @@ def rmse(predictedData, actualData) :
     assert(hasattr(predictedData, "__iter__"))
     assert(hasattr(actualData, "__iter__"))
 
-    return sqrt(mean(square(subtract(predictedData, actualData))))
+    # return sqrt(mean(square(subtract(predictedData, actualData))))
+    z = zip(predictedData, actualData)
+    v = sum((x - y) ** 2 for x, y in z)
+    return sqrt(v / len(predictedData))
 
 def netflix_solve(r, w) :
     """
@@ -43,22 +48,22 @@ def netflix_solve(r, w) :
             movieID = s
             w.write(movieID)
         else :
-            assert(len(movieID) > 0)
+            assert(int(movieID[:-2]) > 0)
             customer = s[:-1]
             customerRating = predictRatings(movieID, customer)
             actualData.append(int(actualFile[movieID[:-2]][customer]))    
-            netflix_write(movieID, customerRating, w)
+            netflix_write(customerRating, w)
 
     w.write("RMSE: " + "%.2f" % rmse(predictedData, actualData) + "\n")
         
             
-def netflix_write(movieID, customer, w) :
-    assert(len(movieID) > 0)
-    w.write("%.1f" % float(customer) + "\n")
+def netflix_write(customerRating, w) :
+    assert(int(customerRating) > -1)
+    w.write("%.1f" % float(customerRating) + "\n")
 
 
 def predictRatings(movieID, customer) :
-    assert(len(movieID) > 0)
+    assert(int(movieID[:-2]) > 0)
     global userAverage
     global meanFile
     global predictedData
@@ -83,12 +88,8 @@ def predictRatings(movieID, customer) :
     predictedData.append(predictedRating) 
     return predictedRating                                                                                                                       
 
-def actualRating(movieID, customerList) :
-    assert(len(movieID) > 0)
-    assert(len(customerList) > 0)
-
-    global actualData
+def actualRating(movieID, customer) :
+    assert(int(movieID[:-2]) > 0)
     global actualFile
 
-    for s in customerList :
-        actualData.append(int(actualFile[movieID[:-2]][s[:-1]]))
+    return int(actualFile[movieID[:-2]][customer[:-1]])
